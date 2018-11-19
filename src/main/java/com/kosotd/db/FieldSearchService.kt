@@ -109,7 +109,7 @@ class FieldSearchService private constructor() {
             buildWherePart(searchTableDTO).ifPresent {
                 builder.append(it)
             }
-            builder.append(" ORDER BY ID ASC")
+            builder.append(" ORDER BY t.ID ASC")
 
             logger.info(builder.toString())
             return executeQuery(builder.toString())
@@ -155,7 +155,7 @@ class FieldSearchService private constructor() {
          */
         fun searchObjectsCount(): Long {
             val builder = StringBuilder()
-            builder.append("SELECT COUNT(t.ID) FROM ").append(searchTableDTO.name).append(" t")
+            builder.append("SELECT COUNT(t.ID) AS ID FROM ").append(searchTableDTO.name).append(" t")
 
             buildJoinPart(searchTableDTO).ifPresent {
                 builder.append(it)
