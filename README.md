@@ -20,8 +20,8 @@ Usage:
     {
         "name":"TABLE",
         "fields":[
-            {"name":"FIELD1","operator":"=","value":1,"fieldType":"NUMBER","logicalStatement":"AND", "priority":1},  
-            {"name":"FIELD2","operator":"=","value":"qwe", "priority":1}
+            {"name":"FIELD1","operator":"=","value":1,"fieldType":"NUMBER", "priority":1},  
+            {"name":"FIELD2","operator":"=","value":"qwe", "logicalStatement":"AND", "priority":1}
         ],
         "join_tables":[
             {
