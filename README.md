@@ -29,7 +29,7 @@ Usage:
                     {"name":"FIELD3","operator":"=","value":78,"fieldType":"NUMBER", "logicalStatement":"OR", "priority":0}
                 ],
                 "join_column":"JOIN_TABLE_ID",
-                "parent_join_column":"TABLE_ID",
+                "parent_join_column":"ID",
                 "name":"JOIN_TABLE"
             }
         ]
@@ -37,7 +37,7 @@ Usage:
     => query:
         SELECT t.ID 
         FROM TABLE 
-        JOIN JOIN_TABLE j0 ON j0.JOIN_TABLE_ID = t.TABLE_ID 
+        JOIN JOIN_TABLE j0 ON j0.JOIN_TABLE_ID = t.ID 
         WHERE (t.FIELD1 = 1 AND (t.FIELD2 = 'qwe' OR j0.FIELD3 = 78))
 ```
       
