@@ -20,13 +20,13 @@ Usage:
     {
         "name":"TABLE",
         "fields":[
-            {"name":"FIELD1","operator":"=","value":1,"fieldType":"NUMBER", "priority":1},  
+            {"name":"FIELD1","operator":"=","value":"1","fieldType":"NUMBER", "priority":1},  
             {"name":"FIELD2","operator":"=","value":"qwe", "logicalStatement":"AND", "priority":1}
         ],
         "join_tables":[
             {
                 "fields":[           
-                    {"name":"FIELD3","operator":"=","value":78,"fieldType":"NUMBER", "logicalStatement":"OR", "priority":0}
+                    {"name":"FIELD3","operator":"=","value":"78","fieldType":"NUMBER", "logicalStatement":"OR", "priority":0}
                 ],
                 "join_column":"JOIN_TABLE_ID",
                 "parent_join_column":"ID",
