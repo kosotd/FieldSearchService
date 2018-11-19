@@ -2,18 +2,19 @@ package com.kosotd.db
 
 import org.junit.Test
 import org.postgresql.ds.PGSimpleDataSource
+import org.postgresql.util.PSQLException
 
 class FieldSearchServiceTest {
 
     private val dataSource = PGSimpleDataSource()
     private val searchService = FieldSearchService.create(dataSource)
 
-    @Test
+    @Test(expected = PSQLException::class)
     fun test1(){
         searchService.search(SearchTableDTO(name = "TABLE")) { it.searchObjects() }
     }
 
-    @Test
+    @Test(expected = PSQLException::class)
     fun test2(){
         searchService.search(SearchTableDTO(
                 name = "TABLE",
@@ -21,7 +22,7 @@ class FieldSearchServiceTest {
                 orderColumn = "COL1")) { it.searchObjects() }
     }
 
-    @Test
+    @Test(expected = PSQLException::class)
     fun test3(){
         searchService.search(SearchTableDTO(
                 name = "TABLE",
@@ -35,7 +36,7 @@ class FieldSearchServiceTest {
                 orderColumn = "COL1")) { it.searchObjects() }
     }
 
-    @Test
+    @Test(expected = PSQLException::class)
     fun test4(){
         searchService.search(SearchTableDTO(
                 name = "TABLE",
@@ -55,7 +56,7 @@ class FieldSearchServiceTest {
                 orderColumn = "COL1")) { it.searchObjects() }
     }
 
-    @Test
+    @Test(expected = PSQLException::class)
     fun test5(){
         searchService.search(SearchTableDTO(
                 name = "TABLE",
