@@ -135,7 +135,7 @@ class FieldSearchService private constructor() {
          */
         fun searchObjectsPagination(l: Int, r: Int): List<Long> {
             val builder = StringBuilder()
-            builder.append("SELECT t.ID, ROW_NUMBER() OVER (ORDER BY ID ASC) AS NUM FROM ").append(searchTableDTO.name).append(" t")
+            builder.append("SELECT t.ID, ROW_NUMBER() OVER (ORDER BY t.ID ASC) AS NUM FROM ").append(searchTableDTO.name).append(" t")
 
             buildJoinPart(searchTableDTO).ifPresent {
                 builder.append(it)
