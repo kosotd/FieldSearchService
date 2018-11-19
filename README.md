@@ -16,8 +16,29 @@ Usage:
     }
 ```      
 ```
-    HttpStatus expectedStatus = HttpStatus.ACCEPTED;
-    RequestService.build(timeout).post("http://site.com").send(expectedStatus);
+    SearchTableDTO json example:
+    {
+        "name":"TABLE",
+        "fields":[
+            {"name":"FIELD1","operator":"=","value":1,"fieldType":"NUMBER","logicalStatement":"AND", "priority":1},  
+            {"name":"FIELD2","operator":"=","value":"qwe", "priority":1}
+        ],
+        "join_tables":[
+            {
+                "fields":[           
+                    {"name":"FIELD3","operator":"=","value":78,"fieldType":"NUMBER", "logicalStatement":"OR", "priority":0}
+                ],
+                "join_column":"JOIN_TABLE_ID",
+                "parent_join_column":"TABLE_ID",
+                "name":"JOIN_TABLE"
+            }
+        ]
+    }
+    => query:
+        SELECT t.ID 
+        FROM TABLE 
+        JOIN JOIN_TABLE j0 ON j0.JOIN_TABLE_ID = t.TABLE_ID 
+        WHERE (t.FIELD1 = 1 AND (t.FIELD2 = 'qwe' OR j0.FIELD3 = 78))
 ```
       
 Maven:
