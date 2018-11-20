@@ -46,7 +46,7 @@ Maven:
     <dependency>
       <groupId>com.kosotd</groupId>
       <artifactId>field-search-service</artifactId>
-      <version>1.3</version>
+      <version>1.4</version>
     </dependency>
     ...
     <repository>
