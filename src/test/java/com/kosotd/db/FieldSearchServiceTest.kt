@@ -27,7 +27,7 @@ class FieldSearchServiceTest {
         searchService.search(SearchTableDTO(
                 name = "TABLE",
                 selectColumns = mutableListOf(SelectColumnDTO("COL1"), SelectColumnDTO("COL2")),
-                joinTables = mutableListOf(JoinTableDTO(
+                joinTables = mutableListOf(SearchTableDTO(
                         name = "TABLE1",
                         selectColumns = mutableListOf(SelectColumnDTO("COL3")),
                         joinColumn = "COL3",
@@ -41,12 +41,12 @@ class FieldSearchServiceTest {
         searchService.search(SearchTableDTO(
                 name = "TABLE",
                 selectColumns = mutableListOf(SelectColumnDTO("COL1"), SelectColumnDTO("COL2")),
-                joinTables = mutableListOf(JoinTableDTO(
+                joinTables = mutableListOf(SearchTableDTO(
                         name = "TABLE1",
                         selectColumns = mutableListOf(SelectColumnDTO("COL3")),
                         joinColumn = "COL3",
                         parentJoinColumn = "COL1",
-                        joinTables = mutableListOf(JoinTableDTO(
+                        joinTables = mutableListOf(SearchTableDTO(
                                 name = "TABLE2",
                                 selectColumns = mutableListOf(SelectColumnDTO("COL4")),
                                 joinColumn = "COL4",
@@ -66,7 +66,7 @@ class FieldSearchServiceTest {
                         "qwe"
 
                 )),
-                joinTables = mutableListOf(JoinTableDTO(
+                joinTables = mutableListOf(SearchTableDTO(
                         name = "TABLE1",
                         selectColumns = mutableListOf(SelectColumnDTO("COL3")),
                         joinColumn = "COL3",
@@ -79,7 +79,7 @@ class FieldSearchServiceTest {
                                 "OR"
 
                         )),
-                        joinTables = mutableListOf(JoinTableDTO(
+                        joinTables = mutableListOf(SearchTableDTO(
                                 name = "TABLE2",
                                 selectColumns = mutableListOf(SelectColumnDTO("COL4")),
                                 joinColumn = "COL4",

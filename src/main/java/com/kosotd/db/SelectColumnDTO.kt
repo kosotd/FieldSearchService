@@ -8,5 +8,5 @@ class SelectColumnDTO(
     @JsonProperty("field_type")
     var fieldType: String? = null
 ){
-    var alias: String = ""
+    internal var alias: String = ""
 }

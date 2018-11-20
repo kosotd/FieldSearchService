@@ -26,5 +26,5 @@ class SearchFieldDTO(
     @JsonProperty("priority")
     var priority: Int? = null
 ){
-    var alias: String = ""
+    internal var alias: String = ""
 }

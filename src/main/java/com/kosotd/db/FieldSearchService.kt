@@ -58,8 +58,11 @@ class FieldSearchService private constructor() {
             if (!isValid) return CheckDTO(isValid, message)
         }
 
+        if (searchTableDTO.parentJoinColumn.isNullOrBlank() && depth == 1) searchTableDTO.parentJoinColumn = "ID"
+
+
         if (depth > 0){
-            if ((searchTableDTO as JoinTableDTO).joinColumn.isNullOrBlank())
+            if (searchTableDTO.joinColumn.isNullOrBlank())
                 return CheckDTO(false, "search_table.join_column must not be empty")
             if (searchTableDTO.parentJoinColumn.isNullOrBlank())
                 return CheckDTO(false, "search_table.parent_join_column must not be empty")

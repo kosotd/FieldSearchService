@@ -2,23 +2,27 @@ package com.kosotd.db
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-open class SearchTableDTO (
+class SearchTableDTO (
         @JsonProperty("name")
-        open var name: String? = null,
+        var name: String? = null,
         @JsonProperty("order_column")
-        open var orderColumn: String? = null,
+        var orderColumn: String? = null,
         @JsonProperty("select_columns")
-        open var selectColumns: MutableList<SelectColumnDTO>? = null,
+        var selectColumns: MutableList<SelectColumnDTO>? = null,
         @JsonProperty("fields")
-        open var fields: MutableList<SearchFieldDTO>? = null,
+        var fields: MutableList<SearchFieldDTO>? = null,
         @JsonProperty("join_tables")
-        open var joinTables: MutableList<JoinTableDTO>? = null
+        var joinTables: MutableList<SearchTableDTO>? = null,
+        @JsonProperty("join_column")
+        var joinColumn: String? = null,
+        @JsonProperty("parent_join_column")
+        var parentJoinColumn: String? = null
 ) {
 
-    var alias: String = ""
-    var parentAlias: String = ""
+    internal var alias: String = ""
+    internal var parentAlias: String = ""
 
-    fun assignAlias(alias: String) {
+    internal fun assignAlias(alias: String) {
         this.alias = alias
         fields?.forEach {
             it.alias = alias
@@ -28,7 +32,7 @@ open class SearchTableDTO (
         }
     }
 
-    fun getAllSelectColumns(): MutableList<SelectColumnDTO> {
+    internal fun getAllSelectColumns(): MutableList<SelectColumnDTO> {
         val result = mutableListOf<SelectColumnDTO>()
         result.addAll(selectColumns!!)
         joinTables!!.forEach {
@@ -37,7 +41,7 @@ open class SearchTableDTO (
         return result
     }
 
-    fun getAllFields(): MutableList<SearchFieldDTO> {
+    internal fun getAllFields(): MutableList<SearchFieldDTO> {
         val result = mutableListOf<SearchFieldDTO>()
         result.addAll(fields!!)
         joinTables!!.forEach {
@@ -46,8 +50,8 @@ open class SearchTableDTO (
         return result
     }
 
-    fun getAllJoinTables(): MutableList<JoinTableDTO> {
-        val result = mutableListOf<JoinTableDTO>()
+    internal fun getAllJoinTables(): MutableList<SearchTableDTO> {
+        val result = mutableListOf<SearchTableDTO>()
         result.addAll(joinTables!!)
         joinTables!!.forEach {
             result.addAll(it.getAllJoinTables())
